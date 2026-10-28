@@ -9,7 +9,13 @@
 [PASS] DNS node avd5 (avd5.axone.me A -> ...127.0.1.5)
 [PASS] DNS SOA axone.me (axone.me SOA -> ...ns1.axone.me)
 [PASS] MAIL smtp accept via lab MX (MX mail.axoneme.education at 127.0.0.1)
-[PASS] MAIL delivered to spool (/var/lab-axoneme/mail-spool/axoneme.education/root/new/1793207165.V2aI3069M536572.htch-runtime)
+[PASS] MAIL delivered to spool (/var/lab-axoneme/mail-spool/axoneme.education/root/new/1793207574.V2aI31fdM963146.htch-runtime)
+[PASS] CERT chain verifies mail.crt (/home/hatch/workspace/lab/axoneme-lab/etc/ca/mail.crt: OK)
+[PASS] CERT chain verifies axone.me.crt (/home/hatch/workspace/lab/axoneme-lab/etc/ca/axone.me.crt: OK)
+[PASS] CERT chain verifies axoneme.education.crt (/home/hatch/workspace/lab/axoneme-lab/etc/ca/axoneme.education.crt: OK)
+[PASS] CERT STARTTLS handshake verifies vs lab CA (openssl s_client, 127.0.0.1:25)
+[PASS] MAIL smtp accept via STARTTLS (MX mail.axoneme.education at 127.0.0.1)
+[PASS] MAIL delivered to spool over TLS (/var/lab-axoneme/mail-spool/axoneme.education/root/new/1793207596.V2aI3213M20247.htch-runtime)
 [PASS] TOR fetch x2 byte-identical to source (onion 2pdd2iu7xrjewn5vtuj65vsyrq4c6dozk2y6fzdkptt7lyjz5bn2lnid.onion; sha256 3ebf221cea5e4b77...)
 
 RESULT: ALL PASS

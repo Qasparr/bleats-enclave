@@ -1,0 +1,14 @@
+Return-Path: <root@axone.me>
+X-Original-To: root@axoneme.education
+Delivered-To: root@axoneme.education
+Received: from mail.axone.me (unknown [127.0.0.1])
+	by mail.axone.me (Postfix) with ESMTP id 0CC8531CE
+	for <root@axoneme.education>; Wed, 28 Oct 2026 17:12:17 +0000 (UTC)
+From: root@axone.me
+To: root@axoneme.education
+Subject: TLS re-test TLSRETEST-1793207526
+Message-Id: <20261028171217.0CC8531CE@mail.axone.me>
+Date: Wed, 28 Oct 2026 17:12:17 +0000 (UTC)
+
+Post-TLS-wiring delivery re-test.
+Token: TLSRETEST-1793207526

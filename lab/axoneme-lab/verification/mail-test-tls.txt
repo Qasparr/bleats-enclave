@@ -1,0 +1,14 @@
+MAIL DELIVERY RE-TEST AFTER TLS WIRING — 2026-10-28 (~17:12 UTC)
+Direction: root@axone.me -> root@axoneme.education
+Route: recipient MX resolved through the lab DNS
+       (axoneme.education MX -> mail.axoneme.education -> 127.0.0.1)
+EHLO: 250
+STARTTLS advertised by the server: True
+SMTP accept: OK
+Postfix queue ID: 0CC8531CE
+Log verdict: postfix/virtual: to=<root@axoneme.education>,
+  relay=virtual, dsn=2.0.0, status=sent (delivered to maildir)
+Delivered file preserved at verification/delivered-message-tls.txt
+sha256 68114ebdadd70b2322df3cba2c7ee93ae0021d05256ede92ee47abb7a6868c67
+(spool copy and evidence copy hash-identical)
+Verdict: the TLS elevation did not break the proven delivery road.

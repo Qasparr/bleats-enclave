@@ -18,6 +18,12 @@
 #      speak SMTP to the resolved host, send a fresh token message
 #      root@axone.me -> root@axoneme.education, then find the token
 #      in the recipient Maildir spool and print its headers.
+#   2b. CERT (added 2026-10-28, CA elevation): the Axoneme Lab CA
+#      chain verifies for every issued leaf (openssl verify), the
+#      live listener completes a STARTTLS handshake that verifies
+#      against the lab CA (openssl s_client, return code 0), and a
+#      second token message is delivered over STARTTLS into the
+#      same spool. LAB ONLY: the CA is the enclave's internal root.
 #   3. TOR: fetch the draft page through the local Tor SOCKS port
 #      TWICE and compare sha256 of both fetches against the source
 #      file on disk. Byte-identical or it did not happen.
@@ -94,6 +100,56 @@ for _ in range(10):
         break
 check("MAIL delivered to spool", landed is not None,
       f"({landed if landed else 'token not found in Maildir'})")
+
+# --- 2b. CERT: Axoneme Lab CA -----------------------------------------
+import ssl  # noqa: E402  (kept local: only the TLS checks need it)
+
+CADIR = LAB / "etc/ca"
+CAFILE = CADIR / "ca.crt"
+for leaf in ("mail.crt", "axone.me.crt", "axoneme.education.crt"):
+    p = subprocess.run(
+        ["openssl", "verify", "-CAfile", str(CAFILE), str(CADIR / leaf)],
+        capture_output=True, text=True, timeout=20)
+    check(f"CERT chain verifies {leaf}",
+          p.returncode == 0 and p.stdout.strip().endswith(": OK"),
+          f"({p.stdout.strip()})")
+
+p = subprocess.run(
+    ["openssl", "s_client", "-starttls", "smtp", "-connect",
+     "127.0.0.1:25", "-CAfile", str(CAFILE)],
+    input="", capture_output=True, text=True, timeout=45)
+check("CERT STARTTLS handshake verifies vs lab CA",
+      "Verify return code: 0 (ok)" in p.stdout,
+      "(openssl s_client, 127.0.0.1:25)")
+
+tls_token = f"LABVERIFYTLS-{int(time.time())}"
+tls_msg = (f"From: root@axone.me\r\nTo: root@axoneme.education\r\n"
+           f"Subject: lab-verify-tls {tls_token}\r\n\r\n"
+           f"Token: {tls_token}\r\n")
+ctx = ssl.create_default_context(cafile=str(CAFILE))
+try:
+    with smtplib.SMTP(mx_ip, 25, timeout=15) as s:
+        s.ehlo("mail.axone.me")
+        s.starttls(context=ctx)
+        s.ehlo("mail.axone.me")
+        s.sendmail("root@axone.me", ["root@axoneme.education"], tls_msg)
+    tls_sent = True
+except Exception as exc:  # report, never smooth
+    tls_sent = False
+    print(f"  starttls smtp error: {exc}")
+check("MAIL smtp accept via STARTTLS", tls_sent, f"(MX {mx_host} at {mx_ip})")
+
+tls_landed = None
+for _ in range(10):
+    time.sleep(1)
+    for f in (SPOOL / "axoneme.education").rglob("*"):
+        if f.is_file() and tls_token in f.read_text(errors="replace"):
+            tls_landed = f
+            break
+    if tls_landed:
+        break
+check("MAIL delivered to spool over TLS", tls_landed is not None,
+      f"({tls_landed if tls_landed else 'TLS token not found in Maildir'})")
 
 # --- 3. TOR ------------------------------------------------------------
 onion_file = LAB / "tor/hs-draft/hostname"

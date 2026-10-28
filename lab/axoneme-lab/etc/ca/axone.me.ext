@@ -1,0 +1,6 @@
+basicConstraints=critical,CA:FALSE
+keyUsage=critical,digitalSignature,keyEncipherment
+extendedKeyUsage=serverAuth
+subjectAltName=DNS:axone.me,DNS:mail.axone.me,DNS:avd1.axone.me,DNS:avd2.axone.me,DNS:avd3.axone.me,DNS:avd4.axone.me,DNS:avd5.axone.me,DNS:localhost,IP:127.0.0.1
+subjectKeyIdentifier=hash
+authorityKeyIdentifier=keyid

@@ -1,0 +1,14 @@
+=== openssl s_client STARTTLS 127.0.0.1:25, CAfile = Axoneme Lab CA ===
+=== Wed Oct 28 17:11:39 UTC 2026 ===
+depth=1 CN = Axoneme Lab CA, O = Axoneme Lab, OU = "LAB ONLY - internal enclave CA, not publicly trusted"
+verify return:1
+depth=0 CN = mail.axone.me, O = Axoneme Lab, OU = "LAB ONLY - internal enclave, not publicly trusted"
+verify return:1
+subject=CN = mail.axone.me, O = Axoneme Lab, OU = "LAB ONLY - internal enclave, not publicly trusted"
+issuer=CN = Axoneme Lab CA, O = Axoneme Lab, OU = "LAB ONLY - internal enclave CA, not publicly trusted"
+Verification: OK
+New, TLSv1.3, Cipher is TLS_AES_256_GCM_SHA384
+Verify return code: 0 (ok)
+    Protocol  : TLSv1.3
+    Cipher    : TLS_AES_256_GCM_SHA384
+    Verify return code: 0 (ok)

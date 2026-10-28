@@ -55,3 +55,23 @@ disable_vrfy_command = yes
 smtpd_helo_required = yes
 message_size_limit = 10240000
 maillog_file = /var/lab-axoneme/logs/postfix.log
+
+# --- TLS: Axoneme Lab CA elevation (2026-10-28, Founder-approved) -----
+# MECHANISM: opportunistic STARTTLS on the lab listener. The server
+# presents the lab CA's mail leaf (mail.chain.crt = leaf + CA); the
+# key stays chmod 600 in etc/ca/ and is read by smtpd before it drops
+# privileges. "may" on both sides: lab plaintext delivery keeps
+# working, TLS is used whenever the peer offers it — elevation
+# without breaking the proven delivery road. The outbound side
+# trusts the lab CA, so lab-to-lab hops can verify, not just encrypt.
+# DOCTRINE: LAB ONLY — this CA is the enclave's internal root, not
+# public trust. Public trust is a production gate (registration +
+# e.g. Let's Encrypt DNS-01); see ../../STATUS.md.
+smtpd_tls_cert_file = /home/hatch/workspace/lab/axoneme-lab/etc/ca/mail.chain.crt
+smtpd_tls_key_file = /home/hatch/workspace/lab/axoneme-lab/etc/ca/mail.key
+smtpd_tls_security_level = may
+smtpd_tls_loglevel = 1
+smtpd_tls_received_header = yes
+smtp_tls_security_level = may
+smtp_tls_CAfile = /home/hatch/workspace/lab/axoneme-lab/etc/ca/ca.crt
+smtp_tls_loglevel = 1

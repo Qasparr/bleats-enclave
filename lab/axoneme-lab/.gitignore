@@ -3,3 +3,5 @@
 tor/
 *.db
 __pycache__/
+etc/ca/*.key
+etc/ca/*.srl
