@@ -1,0 +1,5 @@
+# NEVER committed: hidden-service private keys, tor runtime data,
+# mail spools, queues, logs. Keys are custody, not content.
+tor/
+*.db
+__pycache__/

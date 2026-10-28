@@ -1,0 +1,32 @@
+send: 'ehlo mail.axone.me\r\n'
+reply: b'250-mail.axone.me\r\n'
+reply: b'250-PIPELINING\r\n'
+reply: b'250-SIZE 10240000\r\n'
+reply: b'250-ETRN\r\n'
+reply: b'250-ENHANCEDSTATUSCODES\r\n'
+reply: b'250-8BITMIME\r\n'
+reply: b'250-DSN\r\n'
+reply: b'250-SMTPUTF8\r\n'
+reply: b'250 CHUNKING\r\n'
+reply: retcode (250); Msg: b'mail.axone.me\nPIPELINING\nSIZE 10240000\nETRN\nENHANCEDSTATUSCODES\n8BITMIME\nDSN\nSMTPUTF8\nCHUNKING'
+send: 'mail FROM:<root@axone.me> size=285\r\n'
+reply: b'250 2.1.0 Ok\r\n'
+reply: retcode (250); Msg: b'2.1.0 Ok'
+send: 'rcpt TO:<root@axoneme.education>\r\n'
+reply: b'250 2.1.5 Ok\r\n'
+reply: retcode (250); Msg: b'2.1.5 Ok'
+send: 'data\r\n'
+reply: b'354 End data with <CR><LF>.<CR><LF>\r\n'
+reply: retcode (354); Msg: b'End data with <CR><LF>.<CR><LF>'
+data: (354, b'End data with <CR><LF>.<CR><LF>')
+send: b'From: root@axone.me\r\nTo: root@axoneme.education\r\nSubject: LAB delivery proof LABMAIL-1793206601\r\n\r\nLab mail transit proof.\r\nToken: LABMAIL-1793206601\r\nSent from root@axone.me through the lab MX (mail.axoneme.education) to root@axoneme.education.\r\n93 - Live, Love, and let Love, Live.\r\n.\r\n'
+reply: b'250 2.0.0 Ok: queued as 5CCBE2E27\r\n'
+reply: retcode (250); Msg: b'2.0.0 Ok: queued as 5CCBE2E27'
+data: (250, b'2.0.0 Ok: queued as 5CCBE2E27')
+send: 'quit\r\n'
+reply: b'221 2.0.0 Bye\r\n'
+reply: retcode (221); Msg: b'2.0.0 Bye'
+dig axoneme.education MX -> axoneme.education.	600	IN	MX	10 mail.axoneme.education.
+dig mail.axoneme.education A -> mail.axoneme.education.	600	IN	A	127.0.0.1
+MX host: mail.axoneme.education at 127.0.0.1
+SMTP send completed

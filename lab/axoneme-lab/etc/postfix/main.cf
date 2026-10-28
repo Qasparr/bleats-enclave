@@ -1,0 +1,57 @@
+# =====================================================================
+# main.cf — LAB Postfix instance for axone.me + axoneme.education
+#
+#   93 — Live, Love, and let Love, Live.
+#   Authorship attributed exclusively to Johnathan 'Qasparr' Monroe
+#   (Greek, -ARR, All Rights Reserved, Without Prejudice).
+#   Scientific Illuminism — Method of Science, Aim of Religion.
+#   Filed 2026-10-28 under his LAB BUILD order (12:51 EDT).
+#
+# MECHANISM: a dedicated Postfix instance (postfix -c THIS_DIR) that
+# listens ONLY on 127.0.0.1:25 and delivers for two VIRTUAL mailbox
+# domains into per-domain Maildir spools under
+# /var/lab-axoneme/mail-spool/<domain>/root/. The domains are NOT
+# registered yet; this daemon serves the LAB zones published by the
+# lab dnsmasq next door. It sends and receives nothing on the public
+# internet — inet_interfaces is loopback, mynetworks is 127/8.
+#
+# DOCTRINE: described != delivered. Delivery claims in STATUS.md
+# rest on the delivered file in the spool and its Received: headers,
+# filed under ../../verification/ — never on this file's say-so.
+# =====================================================================
+
+compatibility_level = 3.6
+
+# --- identity (lab) ---------------------------------------------------
+myhostname = mail.axone.me
+mydomain = axone.me
+myorigin = axone.me
+smtpd_banner = $myhostname ESMTP LAB (axoneme lab - not public mail)
+
+# --- lab custody: queue + data live outside the workspace ----------
+# (the workspace mount will not let the delivery agent own files;
+#  runtime state sits in /var/lab-axoneme, configs + evidence here.)
+queue_directory = /var/lab-axoneme/postfix-queue
+data_directory = /var/lab-axoneme/postfix-data
+mail_owner = postfix
+setgid_group = postdrop
+
+# --- network scope: the lab and nothing else -------------------------
+inet_interfaces = 127.0.0.1
+inet_protocols = ipv4
+mynetworks = 127.0.0.0/8
+mydestination = localhost
+
+# --- virtual mailboxes: root@ each lab domain ------------------------
+virtual_mailbox_domains = axone.me, axoneme.education
+virtual_mailbox_base = /var/lab-axoneme/mail-spool
+virtual_mailbox_maps = hash:/var/lab-axoneme/etc/virtual_mailbox
+virtual_uid_maps = static:997
+virtual_gid_maps = static:993
+virtual_minimum_uid = 100
+
+# --- hygiene -----------------------------------------------------------
+disable_vrfy_command = yes
+smtpd_helo_required = yes
+message_size_limit = 10240000
+maillog_file = /var/lab-axoneme/logs/postfix.log

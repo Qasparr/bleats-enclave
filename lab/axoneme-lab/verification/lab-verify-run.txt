@@ -1,0 +1,15 @@
+[PASS] DNS apex A axone.me (axone.me A -> ...127.0.0.1)
+[PASS] DNS apex A axoneme.education (axoneme.education A -> ...127.0.0.1)
+[PASS] DNS MX axone.me (axone.me MX -> ...mail.axone.me)
+[PASS] DNS MX axoneme.education (axoneme.education MX -> ...mail.axoneme.education)
+[PASS] DNS node avd1 (avd1.axone.me A -> ...127.0.1.1)
+[PASS] DNS node avd2 (avd2.axone.me A -> ...127.0.1.2)
+[PASS] DNS node avd3 (avd3.axone.me A -> ...127.0.1.3)
+[PASS] DNS node avd4 (avd4.axone.me A -> ...127.0.1.4)
+[PASS] DNS node avd5 (avd5.axone.me A -> ...127.0.1.5)
+[PASS] DNS SOA axone.me (axone.me SOA -> ...ns1.axone.me)
+[PASS] MAIL smtp accept via lab MX (MX mail.axoneme.education at 127.0.0.1)
+[PASS] MAIL delivered to spool (/var/lab-axoneme/mail-spool/axoneme.education/root/new/1793207165.V2aI3069M536572.htch-runtime)
+[PASS] TOR fetch x2 byte-identical to source (onion 2pdd2iu7xrjewn5vtuj65vsyrq4c6dozk2y6fzdkptt7lyjz5bn2lnid.onion; sha256 3ebf221cea5e4b77...)
+
+RESULT: ALL PASS

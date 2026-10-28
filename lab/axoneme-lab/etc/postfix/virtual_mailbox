@@ -1,0 +1,4 @@
+# virtual_mailbox map — LAB axoneme build, 2026-10-28
+# address                maildir (relative to virtual_mailbox_base)
+root@axone.me            axone.me/root/
+root@axoneme.education   axoneme.education/root/

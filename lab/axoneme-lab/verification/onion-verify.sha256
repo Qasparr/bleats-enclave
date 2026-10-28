@@ -1,0 +1,8 @@
+# onion byte-identity check - 2026-10-28T17:05:43Z - onion 2pdd2iu7xrjewn5vtuj65vsyrq4c6dozk2y6fzdkptt7lyjz5bn2lnid.onion
+# source vs two independent fetches through Tor:
+3ebf221cea5e4b77578f61a18bbadba9857ed8a0f94aeb2b67e77316274d5b0d  /home/hatch/workspace/lab/axoneme-lab/site/index.html
+3ebf221cea5e4b77578f61a18bbadba9857ed8a0f94aeb2b67e77316274d5b0d  /home/hatch/workspace/lab/axoneme-lab/verification/onion-fetch-1.html
+3ebf221cea5e4b77578f61a18bbadba9857ed8a0f94aeb2b67e77316274d5b0d  /home/hatch/workspace/lab/axoneme-lab/verification/onion-fetch-2.html
+# seal asset source vs through-Tor fetch (earlier run):
+70e1708105c12f7e699b0ae4bfe466feee0992f3e19b921f31ce65d4ca734d87  /home/hatch/workspace/lab/axoneme-lab/site/assets/bleat-seal-rim-legend.png
+70e1708105c12f7e699b0ae4bfe466feee0992f3e19b921f31ce65d4ca734d87  /home/hatch/workspace/lab/axoneme-lab/verification/onion-fetch-seal.png

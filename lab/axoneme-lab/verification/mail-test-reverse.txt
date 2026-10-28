@@ -1,0 +1,5 @@
+dig axone.me MX -> axone.me.		600	IN	MX	10 mail.axone.me.
+dig mail.axone.me A -> mail.axone.me.		600	IN	A	127.0.0.1
+MX host: mail.axone.me at 127.0.0.1
+{}
+reverse send completed

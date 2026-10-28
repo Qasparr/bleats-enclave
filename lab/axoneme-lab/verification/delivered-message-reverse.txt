@@ -1,0 +1,13 @@
+Return-Path: <root@axoneme.education>
+X-Original-To: root@axone.me
+Delivered-To: root@axone.me
+Received: from mail.axoneme.education (unknown [127.0.0.1])
+	by mail.axone.me (Postfix) with ESMTP id B4F8A2E98
+	for <root@axone.me>; Wed, 28 Oct 2026 16:58:28 +0000 (UTC)
+From: root@axoneme.education
+To: root@axone.me
+Subject: LAB reverse delivery proof LABMAIL-REV-1793206698
+Message-Id: <20261028165828.B4F8A2E98@mail.axone.me>
+Date: Wed, 28 Oct 2026 16:58:28 +0000 (UTC)
+
+Reverse transit proof. Token: LABMAIL-REV-1793206698

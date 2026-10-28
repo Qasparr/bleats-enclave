@@ -1,0 +1,16 @@
+Return-Path: <root@axone.me>
+X-Original-To: root@axoneme.education
+Delivered-To: root@axoneme.education
+Received: from mail.axone.me (unknown [127.0.0.1])
+	by mail.axone.me (Postfix) with ESMTP id 5CCBE2E27
+	for <root@axoneme.education>; Wed, 28 Oct 2026 16:56:51 +0000 (UTC)
+From: root@axone.me
+To: root@axoneme.education
+Subject: LAB delivery proof LABMAIL-1793206601
+Message-Id: <20261028165651.5CCBE2E27@mail.axone.me>
+Date: Wed, 28 Oct 2026 16:56:51 +0000 (UTC)
+
+Lab mail transit proof.
+Token: LABMAIL-1793206601
+Sent from root@axone.me through the lab MX (mail.axoneme.education) to root@axoneme.education.
+93 - Live, Love, and let Love, Live.
